@@ -34,7 +34,11 @@ main {
   text-align: start;
 }
 
-.purchases__cell--bold {
+p.purchases__content {
+    margin: 0;
+}
+
+.purchases__content--bold {
     font-weight: bold;
 }
 
@@ -42,10 +46,6 @@ main {
     width: 3rem;
     height: 3rem;
     border-radius: 100%;
-}
-
-.purchases__cell p {
-    margin: 0;
 }
 
 .purchases_category {

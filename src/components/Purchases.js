@@ -19,12 +19,14 @@ function Purchases({ data }) {
                     {data.map((datum, idx) => {
                         return (
                             <tr key={idx}>
-                                <td className="purchases__cell purchases__cell--bold">
-                                    {datum.name}
+                                <td className="purchases__cell">
+                                    <p className="purchases__content purchases__content--bold">
+                                        {datum.name}
+                                    </p>
                                 </td>
                                 <td className="purchases__cell">
                                     <img
-                                        className="purchases__locationimg"
+                                        className="purchases__content purchases__locationimg"
                                         alt={datum.name}
                                         src={datum.location}
                                         onError={(e) => e.target.style.display = 'none'}
@@ -49,10 +51,14 @@ function Purchases({ data }) {
                                     {/* <p dangerouslySetInnerHTML={{
                                         __html: datum.description
                                     }}></p> */}
-                                    <p>{datum.description}</p>
+                                    <p className="purchases__content">
+                                        {datum.description}
+                                    </p>
                                 </td>
-                                <td className="purchases__cell--bold">
-                                    {datum.price}
+                                <td className="purchases__cell">
+                                    <p className="purchases__content purchases__content--bold">
+                                        {`$${(datum.price / 100).toFixed(2)}`}
+                                    </p>
                                 </td>
                                 <td className="purchases__cell">
                                     {'...'}
@@ -93,7 +99,7 @@ function CategoryCell({ category }) {
 
     return (
         <div className={classNames}>
-            <p>{category}</p>
+            <p className="purchases__content">{category}</p>
         </div>
     );
 };
