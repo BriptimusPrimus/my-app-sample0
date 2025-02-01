@@ -29,7 +29,7 @@ function Purchases({ data, totalPages }) {
                         return (
                             <tr key={idx} className="purchases__row">
                                 <td className="purchases__cell">
-                                    <p className="purchases__content purchases__content--bold">
+                                    <p className="purchases__content purchases__content--bold purchases__content--capitalize">
                                         {datum.name}
                                     </p>
                                 </td>
@@ -42,14 +42,19 @@ function Purchases({ data, totalPages }) {
                                     />
                                 </td>
                                 <td className="purchases__cell">
-                                    {
-                                        new Date(datum.purchaseDate)
-                                            .toLocaleDateString('en-US', {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            })
-                                    }
+                                    <label className="purchases__cell__label">
+                                        Purchase Date
+                                    </label>
+                                    <p className="purchases__content">
+                                        {
+                                            new Date(datum.purchaseDate)
+                                                .toLocaleDateString('en-US', {
+                                                    year: "numeric",
+                                                    month: "long",
+                                                    day: "numeric",
+                                                })
+                                        }
+                                    </p>
                                 </td>
                                 <td className="purchases__cell">
                                     <CategoryCell category={datum.category} />
