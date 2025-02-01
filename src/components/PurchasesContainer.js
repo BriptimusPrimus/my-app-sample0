@@ -3,27 +3,23 @@ import Purchases from './Purchases';
 
 function PurchasesContainer({ fetchData, pageSize }) {
     const [purchases, setPurchases] = useState([]);
+    const [error, setError] = useState(null);
     const [page, setPage] = useState(0);
 
     useEffect(() => {
         const genGetData = async () => {
             try {
                 const res = await fetchData();
-                // TODO: remove log
-                console.log({
-                    res
-                });
 
                 if (!res.ok) {
-                    // TODO: handle error
-                    alert(res.errMsg);
+                    setError(res.errMsg);
                     return;
                 }
 
                 const { data } = res;
                 setPurchases(data);
             } catch (err) {
-                // TODO: handle error
+                setError(err.message);
             }
         };
 
@@ -59,6 +55,13 @@ function PurchasesContainer({ fetchData, pageSize }) {
 
     return (
         <section>
+            {
+                error != null ? (
+                    <p className="global_error">
+                        <strong>Error:</strong> {error}. Try again later.
+                    </p>
+                ) : null
+            }            
             <Purchases
                 data={pageData}
                 page={page}

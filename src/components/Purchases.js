@@ -8,6 +8,12 @@ function Purchases({
     prevPageEnabled,
     nextPageEnabled
 }) {
+    if (data.length === 0) {
+        return (
+            <p className="empty_table_msg">No data available.</p>
+        );
+    }
+
     return (
         <>
             <table className="purchases">

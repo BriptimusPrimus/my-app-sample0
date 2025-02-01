@@ -8,6 +8,24 @@ main {
     padding: 2rem 4rem;
 }
 
+.global_error {
+    font-size: 1.3rem;
+    margin: 0;
+    padding: .5rem;
+    background-color: #fdecea;
+    color: #b71c1c;   
+    border: 1px solid #f5c6cb;
+    border-radius: 10px;
+}
+
+.empty_table_msg {
+    font-size: 2rem;
+    padding: 1rem;                  
+    background-color: #eee; 
+    border: 2px dashed #ccc;   
+    border-radius: 10px;       
+}
+
 .purchases {
     border-collapse: separate;
     border-spacing: 0;
