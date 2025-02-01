@@ -4,6 +4,15 @@ function Purchases({ data, totalPages }) {
         <>
             <table className="purchases">
                 <caption className="purchases__title">Purchases</caption>
+                <colgroup>
+                    <col style={{ width: '15%' }} />
+                    <col style={{ width: '14%' }} />
+                    <col style={{ width: '14%' }} />
+                    <col style={{ width: '16%' }} />
+                    <col style={{ width: '23%' }} />
+                    <col style={{ width: '9%' }} />
+                    <col style={{ width: '9%' }} />
+                </colgroup>
                 <thead>
                     <tr>
                         <th scope="col" className="purchases__headcell">Name</th>
@@ -18,9 +27,9 @@ function Purchases({ data, totalPages }) {
                 <tbody>
                     {data.map((datum, idx) => {
                         return (
-                            <tr key={idx}>
+                            <tr key={idx} className="purchases__row">
                                 <td className="purchases__cell">
-                                    <p className="purchases__content purchases__content--bold">
+                                    <p className="purchases__content purchases__content--bold purchases__content--capitalize">
                                         {datum.name}
                                     </p>
                                 </td>
@@ -33,14 +42,19 @@ function Purchases({ data, totalPages }) {
                                     />
                                 </td>
                                 <td className="purchases__cell">
-                                    {
-                                        new Date(datum.purchaseDate)
-                                            .toLocaleDateString('en-US', {
-                                                year: "numeric",
-                                                month: "long",
-                                                day: "numeric",
-                                            })
-                                    }
+                                    <label className="purchases__cell__label">
+                                        Purchase Date
+                                    </label>
+                                    <p className="purchases__content">
+                                        {
+                                            new Date(datum.purchaseDate)
+                                                .toLocaleDateString('en-US', {
+                                                    year: "numeric",
+                                                    month: "long",
+                                                    day: "numeric",
+                                                })
+                                        }
+                                    </p>
                                 </td>
                                 <td className="purchases__cell">
                                     <CategoryCell category={datum.category} />
