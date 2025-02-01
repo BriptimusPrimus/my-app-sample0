@@ -44,14 +44,15 @@ main {
     border-radius: 100%;
 }
 
+.purchases__cell p {
+    margin: 0;
+}
+
 .purchases_category {
     padding: .4rem;
     text-align: center;
     font-weight: bold;
     border-radius: 5px;
-}
-.purchases_category p {
-    margin: 0;
 }
 .purchases_category--apparel {
     color: #3e158a;

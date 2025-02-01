@@ -19,8 +19,10 @@ function Purchases({ data }) {
                     {data.map((datum, idx) => {
                         return (
                             <tr key={idx}>
-                                <td className="purchases__cell--bold">{datum.name}</td>
-                                <td>
+                                <td className="purchases__cell purchases__cell--bold">
+                                    {datum.name}
+                                </td>
+                                <td className="purchases__cell">
                                     <img
                                         className="purchases__locationimg"
                                         alt={datum.name}
@@ -28,7 +30,7 @@ function Purchases({ data }) {
                                         onError={(e) => e.target.style.display = 'none'}
                                     />
                                 </td>
-                                <td>
+                                <td className="purchases__cell">
                                     {
                                         new Date(datum.purchaseDate)
                                             .toLocaleDateString('en-US', {
@@ -38,12 +40,23 @@ function Purchases({ data }) {
                                             })
                                     }
                                 </td>
-                                <td>
+                                <td className="purchases__cell">
                                     <CategoryCell category={datum.category} />
                                 </td>
-                                <td>{datum.description}</td>
-                                <td className="purchases__cell--bold">{datum.price}</td>
-                                <td>{'...'}</td>
+                                <td className="purchases__cell">
+                                    {/* Insert dangerous HTML only if you trust the source of data */}
+                                    {/* Use DOMPurify or some other third party lib. Out of scope */}
+                                    {/* <p dangerouslySetInnerHTML={{
+                                        __html: datum.description
+                                    }}></p> */}
+                                    <p>{datum.description}</p>
+                                </td>
+                                <td className="purchases__cell--bold">
+                                    {datum.price}
+                                </td>
+                                <td className="purchases__cell">
+                                    {'...'}
+                                </td>
                             </tr>
                         );
                     })}
