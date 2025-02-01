@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import Purchases from './Purchases';
 
-function PurchasesContainer({ fetchData }) {
+function PurchasesContainer({ fetchData, pageSize }) {
     const [purchases, setPurchases] = useState([]);
+    const [page, setPage] = useState(3);
 
     useEffect(() => {
         const genGetData = async () => {
@@ -29,9 +30,22 @@ function PurchasesContainer({ fetchData }) {
         genGetData();
     }, []);
 
+    const totalPages =
+        Math.floor(purchases.length / pageSize) +
+        purchases.length % pageSize === 0 ?
+            0 :
+            1;
+
+    const startIdx = page * pageSize;
+    const endIdx = startIdx + pageSize;
+    const pageData = purchases.slice(startIdx, endIdx);
+
     return (
-        <section >
-            <Purchases data={purchases} />
+        <section>
+            <Purchases
+                data={pageData}
+                totalPages={totalPages}
+            />
         </section>
     );
 }

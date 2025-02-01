@@ -56,7 +56,8 @@ const fetchPurchases = async () => {
 function Main() {
     return (
         <main>
-            <PurchasesContainer 
+            <PurchasesContainer
+                pageSize={10}
                 fetchData={fetchPurchases}
             />
         </main>

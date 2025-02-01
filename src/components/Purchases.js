@@ -1,5 +1,5 @@
 
-function Purchases({ data }) {
+function Purchases({ data, totalPages }) {
     return (
         <>
             <table className="purchases">
@@ -61,7 +61,7 @@ function Purchases({ data }) {
                                     </p>
                                 </td>
                                 <td className="purchases__cell">
-                                    {'...'}
+                                    <RowOptions />
                                 </td>
                             </tr>
                         );
@@ -101,6 +101,19 @@ function CategoryCell({ category }) {
         <div className={classNames}>
             <p className="purchases__content">{category}</p>
         </div>
+    );
+};
+
+function RowOptions() {
+    return (
+        <button
+            className="purchases__content purchases__options"
+            aria-label="options"
+        >
+            <span />
+            <span />
+            <span />
+        </button>
     );
 };
 
