@@ -1,5 +1,5 @@
 
-function Purchases({ data }) {
+function Purchases({ data, totalPages }) {
     return (
         <>
             <table className="purchases">
