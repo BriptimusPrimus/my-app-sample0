@@ -1,6 +1,35 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 main {
-    padding: 2rem;
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* gap: 2rem; */
+    padding: 2rem 4rem;
+}
+
+
+.purchases {
+    border-collapse: separate;
+    border-spacing: 0;
+    /* width: 100%;     */
+    border: 2px solid #e7e7e7;
+    border-radius: 10px;
+}
+
+.purchases__title {
+    text-align: start;
+    margin: 1rem 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.purchases__headcell {
+    border-bottom: 2px solid #e7e7e7;
+}
+
+.purchases th,
+.purchases td {
+  padding: 1rem;
+  text-align: center;
 }

@@ -31,7 +31,6 @@ function PurchasesContainer({ fetchData }) {
 
     return (
         <section >
-            <h1>Purchases</h1>
             <Purchases data={purchases} />
         </section>
     );

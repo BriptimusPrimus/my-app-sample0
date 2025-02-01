@@ -2,28 +2,30 @@
 function Purchases({ data }) {
     return (
         <>
-            <table>
-                <caption>Purchases</caption>
+            <table className="purchases">
+                <caption className="purchases__title">Purchases</caption>
                 <thead>
                     <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Purchase Date</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Description</th>
-                        <th scope="col">Price</th>
+                        <th scope="col" className="purchases__headcell">Name</th>
+                        <th scope="col" className="purchases__headcell">Location</th>
+                        <th scope="col" className="purchases__headcell">Purchase Date</th>
+                        <th scope="col" className="purchases__headcell">Category</th>
+                        <th scope="col" className="purchases__headcell">Description</th>
+                        <th scope="col" className="purchases__headcell">Price</th>
+                        <th scope="col" className="purchases__headcell"></th>
                     </tr>
                 </thead>
                 <tbody>
-                    {data.map((datum) => {
+                    {data.map((datum, idx) => {
                         return (
-                            <tr>
+                            <tr key={idx}>
                                 <td>{datum.name}</td>
                                 <td>{datum.location}</td>
                                 <td>{datum.purchaseDate}</td>
                                 <td>{datum.category}</td>
                                 <td>{datum.description}</td>
                                 <td>{datum.price}</td>
+                                <td>{'...'}</td>
                             </tr>
                         );
                     })}
