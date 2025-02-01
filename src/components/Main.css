@@ -37,3 +37,9 @@ main {
 .purchases__cell--bold {
     font-weight: bold;
 }
+
+.purchases__locationimg {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 100%;
+}

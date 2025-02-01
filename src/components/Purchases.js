@@ -20,7 +20,14 @@ function Purchases({ data }) {
                         return (
                             <tr key={idx}>
                                 <td className="purchases__cell--bold">{datum.name}</td>
-                                <td>{datum.location}</td>
+                                <td>
+                                    <img
+                                        className="purchases__locationimg" 
+                                        alt={datum.name}
+                                        src={datum.location} 
+                                        onError={(e) => e.target.style.display = 'none'}
+                                    />
+                                </td>
                                 <td>{datum.purchaseDate}</td>
                                 <td>{datum.category}</td>
                                 <td>{datum.description}</td>
