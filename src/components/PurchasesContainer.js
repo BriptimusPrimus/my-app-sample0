@@ -3,27 +3,23 @@ import Purchases from './Purchases';
 
 function PurchasesContainer({ fetchData, pageSize }) {
     const [purchases, setPurchases] = useState([]);
-    const [page, setPage] = useState(3);
+    const [error, setError] = useState(null);
+    const [page, setPage] = useState(0);
 
     useEffect(() => {
         const genGetData = async () => {
             try {
                 const res = await fetchData();
-                // TODO: remove log
-                console.log({
-                    res
-                });
 
                 if (!res.ok) {
-                    // TODO: handle error
-                    alert(res.errMsg);
+                    setError(res.errMsg);
                     return;
                 }
 
                 const { data } = res;
                 setPurchases(data);
             } catch (err) {
-                // TODO: handle error
+                setError(err.message);
             }
         };
 
@@ -32,9 +28,26 @@ function PurchasesContainer({ fetchData, pageSize }) {
 
     const totalPages =
         Math.floor(purchases.length / pageSize) +
-        purchases.length % pageSize === 0 ?
-            0 :
-            1;
+            (purchases.length % pageSize === 0 ?
+                0 :
+                1);
+
+    const nextPageEnabled = ((page + 1) * pageSize) < purchases.length;
+    const prevPageEnabled = page > 0;
+
+    const goToPrevPage = () => {
+        if (!prevPageEnabled) {
+            return;
+        }
+        setPage(val => val - 1);
+    };
+
+    const goToNextPage = () => {
+        if (!nextPageEnabled) {
+            return;
+        }
+        setPage(val => val + 1);
+    }
 
     const startIdx = page * pageSize;
     const endIdx = startIdx + pageSize;
@@ -42,9 +55,21 @@ function PurchasesContainer({ fetchData, pageSize }) {
 
     return (
         <section>
+            {
+                error != null ? (
+                    <p className="global_error">
+                        <strong>Error:</strong> {error}. Try again later.
+                    </p>
+                ) : null
+            }            
             <Purchases
                 data={pageData}
+                page={page}
                 totalPages={totalPages}
+                goToPrevPage={goToPrevPage}
+                goToNextPage={goToNextPage}
+                prevPageEnabled={prevPageEnabled}
+                nextPageEnabled={nextPageEnabled}
             />
         </section>
     );

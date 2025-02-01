@@ -1,5 +1,19 @@
 
-function Purchases({ data, totalPages }) {
+function Purchases({ 
+    data, 
+    page,
+    totalPages,
+    goToPrevPage,
+    goToNextPage,
+    prevPageEnabled,
+    nextPageEnabled
+}) {
+    if (data.length === 0) {
+        return (
+            <p className="empty_table_msg">No data available.</p>
+        );
+    }
+
     return (
         <>
             <table className="purchases">
@@ -82,6 +96,25 @@ function Purchases({ data, totalPages }) {
                     })}
                 </tbody>
             </table>
+            <section className="controls">
+                <button
+                    disabled={!prevPageEnabled}
+                    className="controls__btn controls__btn__prev"
+                    onClick={goToPrevPage}
+                >
+                    {' < '}
+                </button>
+                <p className="controls__pageinfo">
+                    Page {page + 1} of {totalPages}
+                </p>
+                <button 
+                    disabled={!nextPageEnabled}
+                    className="controls__btn controls__btn__next"
+                    onClick={goToNextPage}
+                >
+                    {' > '}
+                </button>
+            </section>
         </>
     );
 };
