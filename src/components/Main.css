@@ -8,11 +8,10 @@ main {
     padding: 2rem 4rem;
 }
 
-
 .purchases {
     border-collapse: separate;
     border-spacing: 0;
-    /* width: 100%;     */
+    /* width: 100%; */
     border: 2px solid #e7e7e7;
     border-radius: 10px;
 }
@@ -32,6 +31,9 @@ main {
 .purchases td {
   padding: 1rem;
   text-align: start;
+  word-wrap: break-word;
+  overflow: hidden;
+  /* border: 1px dashed red; */
 }
 
 p.purchases__content {
@@ -93,6 +95,7 @@ p.purchases__content {
     width: 2rem;
     height: 2rem;
     border-radius: 100%;
+    margin-left: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;

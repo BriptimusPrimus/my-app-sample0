@@ -4,6 +4,15 @@ function Purchases({ data, totalPages }) {
         <>
             <table className="purchases">
                 <caption className="purchases__title">Purchases</caption>
+                <colgroup>
+                    <col style={{ width: '15%' }} />
+                    <col style={{ width: '14%' }} />
+                    <col style={{ width: '14%' }} />
+                    <col style={{ width: '16%' }} />
+                    <col style={{ width: '23%' }} />
+                    <col style={{ width: '9%' }} />
+                    <col style={{ width: '9%' }} />
+                </colgroup>
                 <thead>
                     <tr>
                         <th scope="col" className="purchases__headcell">Name</th>
@@ -18,7 +27,7 @@ function Purchases({ data, totalPages }) {
                 <tbody>
                     {data.map((datum, idx) => {
                         return (
-                            <tr key={idx}>
+                            <tr key={idx} className="purchases__row">
                                 <td className="purchases__cell">
                                     <p className="purchases__content purchases__content--bold">
                                         {datum.name}
