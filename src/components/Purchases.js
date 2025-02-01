@@ -38,7 +38,9 @@ function Purchases({ data }) {
                                             })
                                     }
                                 </td>
-                                <td>{datum.category}</td>
+                                <td>
+                                    <CategoryCell category={datum.category} />
+                                </td>
                                 <td>{datum.description}</td>
                                 <td className="purchases__cell--bold">{datum.price}</td>
                                 <td>{'...'}</td>
@@ -48,6 +50,38 @@ function Purchases({ data }) {
                 </tbody>
             </table>
         </>
+    );
+};
+
+// Apparel
+// Automotive
+// Entertainment
+// Food
+// Footwear
+// Technology
+// Travel
+function CategoryCell({ category }) {
+    const classNames = [
+        'purchases_category',
+        {
+            'apparel': true,
+            'automotive': true,
+            'entertainment': true,
+            'food': true,
+            'footwear': true,
+            'technology': true,
+            'travel': true
+        }[category.toLowerCase()] === true ?
+            `purchases_category--${category.toLowerCase()}` :
+            'purchases_category--unknown'
+    ]
+        .filter(x => x != null)
+        .join(' ');
+
+    return (
+        <div className={classNames}>
+            <p>{category}</p>
+        </div>
     );
 };
 

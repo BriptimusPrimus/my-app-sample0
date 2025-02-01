@@ -43,3 +43,45 @@ main {
     height: 3rem;
     border-radius: 100%;
 }
+
+.purchases_category {
+    padding: .4rem;
+    text-align: center;
+    font-weight: bold;
+    border-radius: 5px;
+}
+.purchases_category p {
+    margin: 0;
+}
+.purchases_category--apparel {
+    color: #3e158a;
+    border: 2px solid #3e158a;
+}
+.purchases_category--automotive {
+    color: #e3581c;
+    border: 2px solid #e3581c;
+}
+.purchases_category--entertainment {
+    color: #1e3b8a;
+    border: 2px solid #1e3b8a;
+}
+.purchases_category--food {
+    color: #1e8a58;
+    border: 2px solid #1e8a58;
+}
+.purchases_category--footwear {
+    color: #970923;
+    border: 2px solid #970923;
+}
+.purchases_category--technology {
+    color: #222;
+    border: 2px solid #222;
+}
+.purchases_category--travel {
+    color: #ccab18;
+    border: 2px solid #ccab18;
+}
+.purchases_category--unknown {
+    color: #aaa;
+    border: 2px solid #aaa;
+}
