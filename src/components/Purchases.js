@@ -19,12 +19,12 @@ function Purchases({ data }) {
                     {data.map((datum, idx) => {
                         return (
                             <tr key={idx}>
-                                <td>{datum.name}</td>
+                                <td className="purchases__cell--bold">{datum.name}</td>
                                 <td>{datum.location}</td>
                                 <td>{datum.purchaseDate}</td>
                                 <td>{datum.category}</td>
                                 <td>{datum.description}</td>
-                                <td>{datum.price}</td>
+                                <td className="purchases__cell--bold">{datum.price}</td>
                                 <td>{'...'}</td>
                             </tr>
                         );

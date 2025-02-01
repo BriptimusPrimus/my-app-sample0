@@ -31,5 +31,9 @@ main {
 .purchases th,
 .purchases td {
   padding: 1rem;
-  text-align: center;
+  text-align: start;
+}
+
+.purchases__cell--bold {
+    font-weight: bold;
 }
