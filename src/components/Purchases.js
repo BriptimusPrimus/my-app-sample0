@@ -22,13 +22,22 @@ function Purchases({ data }) {
                                 <td className="purchases__cell--bold">{datum.name}</td>
                                 <td>
                                     <img
-                                        className="purchases__locationimg" 
+                                        className="purchases__locationimg"
                                         alt={datum.name}
-                                        src={datum.location} 
+                                        src={datum.location}
                                         onError={(e) => e.target.style.display = 'none'}
                                     />
                                 </td>
-                                <td>{datum.purchaseDate}</td>
+                                <td>
+                                    {
+                                        new Date(datum.purchaseDate)
+                                            .toLocaleDateString('en-US', {
+                                                year: "numeric",
+                                                month: "long",
+                                                day: "numeric",
+                                            })
+                                    }
+                                </td>
                                 <td>{datum.category}</td>
                                 <td>{datum.description}</td>
                                 <td className="purchases__cell--bold">{datum.price}</td>
