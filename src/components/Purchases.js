@@ -1,4 +1,6 @@
 import DynamicTable from "./DynamicTable";
+import CategoryCell from './CategoryCell';
+import RowOptions from "./RowOptions";
 
 function Purchases({
     data,
@@ -146,51 +148,6 @@ function Purchases({
                 </button>
             </section>
         </>
-    );
-};
-
-// Apparel
-// Automotive
-// Entertainment
-// Food
-// Footwear
-// Technology
-// Travel
-function CategoryCell({ category }) {
-    const classNames = [
-        'purchases_category',
-        {
-            'apparel': true,
-            'automotive': true,
-            'entertainment': true,
-            'food': true,
-            'footwear': true,
-            'technology': true,
-            'travel': true
-        }[category.toLowerCase()] === true ?
-            `purchases_category--${category.toLowerCase()}` :
-            'purchases_category--unknown'
-    ]
-        .filter(x => x != null)
-        .join(' ');
-
-    return (
-        <div className={classNames}>
-            <p className="purchases__content">{category}</p>
-        </div>
-    );
-};
-
-function RowOptions() {
-    return (
-        <button
-            className="purchases__content purchases__options"
-            aria-label="options"
-        >
-            <span />
-            <span />
-            <span />
-        </button>
     );
 };
 
