@@ -20,12 +20,24 @@ const fetchPurchases = async () => {
     }
 };
 
+const delayedFetchData = async () => {
+    const DELAY = 2000;
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            console.log('DELAYED!');
+            fetchPurchases()
+                .then(resolve)
+                .catch(reject)  
+        }, DELAY);
+    });
+};
+
 function Main() {
     return (
         <main>
             <PurchasesContainer
                 pageSize={10}
-                fetchData={fetchPurchases}
+                fetchData={delayedFetchData}
             />
         </main>
     )

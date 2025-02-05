@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import Purchases from './Purchases';
+import LoadingIcon from './LoadingIcon';
 
 function PurchasesContainer({ fetchData, pageSize }) {
     const [purchases, setPurchases] = useState([]);
     const [error, setError] = useState(null);
     const [page, setPage] = useState(0);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const genGetData = async () => {
             try {
+                setIsLoading(true);
                 const res = await fetchData();
 
                 if (!res.ok) {
@@ -18,8 +21,10 @@ function PurchasesContainer({ fetchData, pageSize }) {
 
                 const { data } = res;
                 setPurchases(data);
+                setIsLoading(false);
             } catch (err) {
                 setError(err.message);
+                setIsLoading(false);
             }
         };
 
@@ -53,6 +58,12 @@ function PurchasesContainer({ fetchData, pageSize }) {
     const endIdx = startIdx + pageSize;
     const pageData = purchases.slice(startIdx, endIdx);
 
+    if (isLoading) {
+        return (
+            <LoadingIcon />
+        )
+    }
+
     return (
         <section>
             {
@@ -61,7 +72,7 @@ function PurchasesContainer({ fetchData, pageSize }) {
                         <strong>Error:</strong> {error}. Try again later.
                     </p>
                 ) : null
-            }            
+            }    
             <Purchases
                 data={pageData}
                 page={page}
